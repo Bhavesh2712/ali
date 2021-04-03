@@ -1,0 +1,628 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>How to Take Smart Notes</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="e0f5f5da-c1d2-4ecc-bd75-035fb0b8bee6" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">✍🏼</span></div><h1 class="page-title">How to Take Smart Notes</h1><table class="properties"><tbody><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Author</th><td>Sonke Ahrens</td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M10.8889,5.5 L3.11111,5.5 L3.11111,7.05556 L10.8889,7.05556 L10.8889,5.5 Z M12.4444,1.05556 L11.6667,1.05556 L11.6667,0 L10.1111,0 L10.1111,1.05556 L3.88889,1.05556 L3.88889,0 L2.33333,0 L2.33333,1.05556 L1.55556,1.05556 C0.692222,1.05556 0.00777777,1.75556 0.00777777,2.61111 L0,12.5 C0,13.3556 0.692222,14 1.55556,14 L12.4444,14 C13.3,14 14,13.3556 14,12.5 L14,2.61111 C14,1.75556 13.3,1.05556 12.4444,1.05556 Z M12.4444,12.5 L1.55556,12.5 L1.55556,3.94444 L12.4444,3.94444 L12.4444,12.5 Z M8.55556,8.61111 L3.11111,8.61111 L3.11111,10.1667 L8.55556,10.1667 L8.55556,8.61111 Z"></path></svg></span>Date Finished</th><td><time>@Jul 1, 2020</time></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M7,13 C10.31348,13 13,10.31371 13,7 C13,3.68629 10.31348,1 7,1 C3.68652,1 1,3.68629 1,7 C1,10.31371 3.68652,13 7,13 Z M3.75098,5.32278 C3.64893,5.19142 3.74268,5 3.90869,5 L10.09131,5 C10.25732,5 10.35107,5.19142 10.24902,5.32278 L7.15771,9.29703 C7.07764,9.39998 6.92236,9.39998 6.84229,9.29703 L3.75098,5.32278 Z"></path></svg></span>Fiction?</th><td><span class="selected-value select-value-color-gray">Non-Fiction</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Genres</th><td><span class="selected-value select-value-color-purple">Writing</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M7,13 C10.31348,13 13,10.31371 13,7 C13,3.68629 10.31348,1 7,1 C3.68652,1 1,3.68629 1,7 C1,10.31371 3.68652,13 7,13 Z M3.75098,5.32278 C3.64893,5.19142 3.74268,5 3.90869,5 L10.09131,5 C10.25732,5 10.35107,5.19142 10.24902,5.32278 L7.15771,9.29703 C7.07764,9.39998 6.92236,9.39998 6.84229,9.29703 L3.75098,5.32278 Z"></path></svg></span>Notes Status</th><td><span class="selected-value select-value-color-yellow">Notes In Progress</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M7,13 C10.31348,13 13,10.31371 13,7 C13,3.68629 10.31348,1 7,1 C3.68652,1 1,3.68629 1,7 C1,10.31371 3.68652,13 7,13 Z M3.75098,5.32278 C3.64893,5.19142 3.74268,5 3.90869,5 L10.09131,5 C10.25732,5 10.35107,5.19142 10.24902,5.32278 L7.15771,9.29703 C7.07764,9.39998 6.92236,9.39998 6.84229,9.29703 L3.75098,5.32278 Z"></path></svg></span>Rating</th><td><span class="selected-value select-value-color-orange">5-Star</span></td></tr></tbody></table></header><div class="page-body"><h1 id="1a7f5082-baab-4b4f-857b-4e0ba40ce60a" class="">🚀 The Book in 3 Sentences</h1><p id="12aec881-8f0c-477a-8185-5fad769d9313" class="">Sorry, I couldn&#x27;t manage 3 sentences. Here are 3 points. </p><ol id="c8497068-7290-4a88-92a1-4acf495a0b76" class="numbered-list" start="1"><li>Take <em>Literature Notes </em>when reading. Highlight stuff and write down stuff that resonates with you. Try to take these notes <em>in your own words</em>. Yes, you might just be paraphrasing from the text for its own sake, but the extra effort is worth it. </li></ol><ol id="d42a962b-bc6a-4447-839a-05ede6071c54" class="numbered-list" start="2"><li>When you&#x27;ve finished a book, go through your <em>Literature Notes </em>and create <em>Permanent Notes </em>from them. Write exactly one note for each idea, and write as if you&#x27;re writing for someone else. Use full sentences, include references. Don&#x27;t just capture ideas, develop them, remix them, contradict them. Make <em>Permanent Notes </em>that are relevant to topics you&#x27;re working on, or subjects you care about. </li></ol><ol id="073660db-d74d-49e3-87df-6d6929257647" class="numbered-list" start="3"><li>Add your <em>Permanent Notes </em>to your <em>Slip-Box. </em>File each one behind (or under) one or more related notes. Add links to related notes. And make sure you can find your notes later, by linking to them from your index, or from your topic notes. </li></ol><h1 id="642c5f95-8a8b-42df-b211-85ef8dcdb8a0" class="">🎨 Impressions</h1><p id="8365ba5c-15da-45ad-8dab-a07267b68667" class="">This book has transformed my relationship with note-taking. I took copious notes while reading it, and everytime I review my highlights, I discover new nuggets. </p><p id="fa682ec0-6744-49ae-879c-91e97b119166" class="">I&#x27;d say it&#x27;s a <em>must-read </em>for anyone who reads a lot. If you don&#x27;t read much (books, articles etc), it&#x27;ll still be useful (because you definitely consume some sort of content). </p><p id="3bc35ed4-136f-40a7-85b9-1c1eaec4852c" class="">If you&#x27;re a student, and all you care about is maximising your grades, it probably won&#x27;t be too relevant. But if you care about learning for its own sake, rather than to just pass the exam, then you&#x27;ll love it. </p><p id="262cd03c-ccd7-4416-8abb-e6d337daa480" class="">
+</p><h1 id="b9767d15-c272-47c1-bc6f-c6f0f8477bd8" class="">☘️ How the Book Changed Me </h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7b9f125e-7b2f-4e59-a666-ab5983ec0c8d"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">How my life / behaviour / thoughts / ideas have changed as a result of reading the book.</div></figure><ul id="6f4d7bce-45d7-451b-8462-a0112e120fc9" class="bulleted-list"><li>Introduced me to the philosophy and methodology of the Zettelkasten system, which I&#x27;ve now incorporated into my own note-taking system + life</li></ul><h1 id="6b62c398-973c-461c-a008-58c09b31eb9f" class="">✍️ My Top 3 Quotes</h1><ul id="b25b61eb-1937-4d73-af57-cd9530f6ed0f" class="bulleted-list"><li></li></ul><h1 id="89757a83-e5b4-40b8-8c90-e71324695fe0" class="">📒 Summary + Notes</h1><ul id="1084ac8a-8807-4b15-a058-3f137576105c" class="toggle"><li><details open=""><summary>Introduction </summary><p id="d81e6596-aa32-4fe0-81cb-521aeb4e1361" class=""> </p><ul id="be848e8d-d887-46f4-8e9f-63907d53856a" class="bulleted-list"><li>Everyone writes. Even non-writers. Students write. When we want to learn something (even if it’s for an oral exam) we write.</li></ul><ul id="8544799e-0164-45cd-885d-9562dadf5dce" class="bulleted-list"><li>But no one talks about writing outside of writing long-form stuff like essays and books. Some books are about style and structure. Others are about how to get the motivation to sit down and how to move through writer’s block.</li></ul><ul id="71984e33-6eae-4f37-86bc-29f55bfeec5d" class="bulleted-list"><li>This book is the gap between the two - “ This book aims to fill this gap by showing you how to efficiently turn your thoughts and discoveries into convincing written pieces and build up a treasure of smart and interconnected notes along the way.”</li></ul><ul id="bcbba189-f3b2-484e-a0ca-03fb8ee4dd26" class="bulleted-list"><li> </li></ul><ul id="33349cb7-c9b9-4584-8e41-9c55853ba584" class="bulleted-list"><li>“Writing is not what follows research, learning or studying, it is the medium of all this work. And maybe that is the reason why we rarely think about this writing, the everyday writing, the note-taking and draft-making. Like breathing, it is vital to what we do, but because we do it constantly, it escapes our attention. But while even the best breathing technique would probably not make much of a difference to our writing, any improvement in the way we organise the everyday writing, how we take notes of what we encounter and what we do with them, will make all the difference for the moment we do face the blank page/screen – or rather not, as those who take smart notes will never have the problem of a blank screen again.”</li></ul><ul id="47e3e3c9-2462-4128-9681-118b82a2fcec" class="bulleted-list"><li> </li></ul><ul id="a0583547-f207-42e8-ad89-99df5e1b7881" class="bulleted-list"><li>When we’re confronted with a blank page, it’s easy to think “I can’t write when I’m staring at a blank page” and then Google solutions for blank page syndrome. We don’t realise that the reason we had the blank page in the first place, is because our note taking was “unsystematic, inefficient or simply wrong” (or non-existent).</li></ul><ul id="b5e72ac8-c888-4ec4-b451-fb56269d5d43" class="bulleted-list"><li>“To sum it up: The quality of a paper and the ease with which it is written depends more than anything on what you have done in writing before you even made a decision on the topic.”</li></ul><ul id="cf01f6ed-0d82-430c-a59f-2d74f3c7ea90" class="bulleted-list"><li>With that in mind, it is not surprising that the single most important indicator of academic success is not to be found in people’s heads, but in the way they do their everyday work. In fact, there is no measurable correlation between a high IQ and academic success – at least not north of 120. Yes, a certain intellectual capacity helps to get into academia, and if you struggle severely with an IQ test, it is likely that you will struggle to solve academic problems, too. But once you are in, a superior IQ will neither help you to distinguish yourself nor protect you from failure. What does make a significant difference along the whole intelligence spectrum is something else: how much self-discipline or self-control one uses to approach the tasks at hand (Duckworth and Seligman, 2005; Tangney, Baumeister, and Boone, 2004). </li></ul><ul id="9bc849b8-7e5e-4340-a521-61aaaf24dd12" class="bulleted-list"><li> </li></ul><ul id="c7da070e-2feb-4475-9a23-c75a90a539bf" class="bulleted-list"><li>People struggle with writing (and creating generally) because it&#x27;s too much of a heavy lift. We need to use our <em>willpower </em>to sit down and create stuff. </li></ul><ul id="ca29f590-2b17-48dc-8851-31a2a8a37c83" class="bulleted-list"><li> </li></ul><ul id="ad1e96e7-860a-43b0-aec0-eb9cc0ccaa3e" class="bulleted-list"><li>Willpower - “Nobody needs willpower not to eat a chocolate bar when there isn’t one around. And nobody needs willpower to do something they wanted to do anyway”. “<mark class="highlight-yellow_background">Every task that is interesting, meaningful and well-defined will be done, because there is no conflict between long- and short-term commitments.</mark> Having a meaningful and well-defined task beats willpower every time. Not <em>having</em> willpower, but <em>not having to use</em> willpower indicates that you set yourself up for success. This is where the organisation of writing and note-taking comes into play. </li></ul><ul id="608698be-8b64-4330-9501-2860e910c40e" class="bulleted-list"><li> </li></ul><blockquote id="d9405b5f-9dfe-484f-bfaa-0915ec17fc91" class="">Not <em>having </em>willpower, but <em>not having to use </em>will power indicates that you set yourself up for success. This is where the organisation of writing and note-taking comes into play. </blockquote></details></li></ul><ul id="fafb0bf6-4ad6-41d3-a2ac-317fec804ebf" class="toggle"><li><details open=""><summary>1 - Everything you need to know</summary><ul id="403d47ff-8d1e-4004-a455-7811c6cf6a3d" class="toggle"><li><details open=""><summary>1.0 - Intro</summary><ul id="a6afcf6a-1f5a-478a-a097-ec2a22104af0" class="bulleted-list"><li> </li></ul><ul id="43d25b84-3587-4bd3-bd47-07de666b0493" class="bulleted-list"><li>“I never force myself to do anything I don’t feel like. Whenever I am stuck, I do something else” - Referencing the tools of note-taking that turned the son of a brewer into one of the most productive and revered social scientists of the 20th century. #Quote #Motivation</li></ul><ul id="f690a54c-4014-4f28-bdfb-768b013f810e" class="bulleted-list"><li>We need a structure that breaks down ‘writing a paper’ or ‘writing an essay’ into small and clearly separated tasks, so we can do one thing at a time. This enables <em>flow</em>.</li></ul><ul id="ab92b890-3ba0-4e3a-a256-cecc509a30f5" class="bulleted-list"><li>In vs About - “Having a clear structure to work <em>in</em> is completely different from making plans <em>about</em> something.”</li></ul><ul id="79783c08-9e9c-4f42-bafa-96dd2dc7e9c0" class="bulleted-list"><li>“How do you plan for insight, which by definition, cannot be anticipated? It’s a huge misunderstanding that the only alternative to planning is aimless messing around. The challenge is to structure one’s workflow in a way that insight and new ideas can become the driving forces that push us forward”.<figure id="f229e1a1-6b86-4554-b043-bda4f141a15e" class="image"><a href="How%20to%20Take%20Smart%20Notes%20e0f5f5dac1d24eccbd75035fb0b8bee6/Untitled.png"><img style="width:1818px" src="How%20to%20Take%20Smart%20Notes%20e0f5f5dac1d24eccbd75035fb0b8bee6/Untitled.png"/></a></figure></li></ul><ul id="03583c6c-c176-4ac5-8b37-a38953149695" class="bulleted-list"><li>Planner vs Expert - “Unfortunately, even universities try to turn students into planners. Sure, planning will get you through your exams if you stick to them and push through. But it will not make you an expert in the art of learning/writing/note-taking (there is research on that: cf. Chapter 1.3). Planners are also unlikely to continue with their studies after they finish their examinations. They are rather glad it is over. Experts, on the other hand, would not even consider voluntarily giving up what has already proved to be rewarding and fun: learning in a way that generates real insight, is accumulative and sparks new ideas. The fact that you invested in this book tells me that you would rather be an expert than a planner.”<ul id="4f8e6e63-2379-452d-b3a7-f603cabf40bb" class="bulleted-list"><li>Finite vs Infinite Games? Planner = playing a finite game. The exam will be over, the essay has a due date, and afterwards we’ll forget about it. Expert = Playing an infinite game. “Experts, on the other hand, would not even consider voluntarily giving up what has already proved to be rewarding and fun - learning in a way that generates real insight, is accumulative, and sparks new ideas.”</li></ul></li></ul><ul id="13687132-0146-4671-a89f-02a1fae0a29e" class="bulleted-list"><li>Imposter Syndrome - Good students, on the other hand, constantly raise the bar for themselves as they focus on what they haven’t learned and mastered yet. This is why high achievers who have had a taste of the vast amount of knowledge out there are likely to suffer from what psychologists call imposter syndrome, the feeling that you are not really up to the job, even though, of all people, they are (Clance and Imes 1978; Brems et al. 1994). This book is for you, the good students, ambitious academics and curious nonfiction writers who understand that insight doesn’t come easy and that writing is not only for proclaiming opinions, but the main tool to achieve insight worth sharing.” #[[Video Idea]] #[[Journal Club Idea]]</li></ul></details></li></ul><ul id="7f33c291-4fa3-4dc6-b236-4ee3c80234a5" class="toggle"><li><details open=""><summary>1.1 - Good solutions are simple and unexpected</summary><ul id="05d7f357-6b5a-4ec9-a002-5e86d905ad56" class="bulleted-list"><li>Complexity is an issue - even if you’re just keeping track of what you read, organise your notes and develop your thoughts, over time things will become increasingly complex, especially because it’s not just about collecting thoughts, but about making connections and sparking new ideas.</li></ul><ul id="455a111e-51cc-4e6e-92d6-8a2fabe26da3" class="bulleted-list"><li>Making your notes simple and siloed into separate, smaller stacks makes everything look less complex, but it reduces the likelihood of building and finding surprising connections between the notes themselves.</li></ul><ul id="44144fa3-b099-430f-b98b-a64a9b5f2dfe" class="bulleted-list"><li>“ Thankfully, we don’t have to choose between usability and usefulness. Quite the contrary. The best way to deal with complexity is to keep things as simple as possible and to follow a few basic principles. The simplicity of the structure allows complexity to build up where we want it: on the content level. There is quite extensive empirical and logical research on this phenomenon (for an overview: cf. Sull and Eisenhardt, 2015). Taking smart notes is as simple as it gets.”</li></ul><ul id="264940d0-859a-471c-a104-76a7d53b8973" class="bulleted-list"><li>“Routines require simple, repeatable tasks that can become automatic and fit together seamlessly. Only when all the related work becomes part of an overarching and interlocked process, where all bottlenecks are removed, can significant change take place”.</li></ul><ul id="8af3b691-2a22-4f7d-81ae-79e9bb2ae17f" class="bulleted-list"><li>“The importance of an overarching workflow is the great insight of David Allen’s [[Getting Things Done]].<ul id="d5d84e16-8fa8-4d84-a336-0a1aa66ab46b" class="bulleted-list"><li>There are few serious knowledge workers left who haven’t heard of “GTD” and that is for a good reason: It works. The principle of GTD is to collect everything that needs to be taken care of in one place and process it in a standardised way. This doesn’t necessarily mean that we actually do everything we once intended to do, but it forces us to make clear choices and regularly check if our tasks still fit into the bigger picture. Only if we know that everything is taken care of, from the important to the trivial, can we let go and focus on what is right in front of us. Only if nothing else is lingering in our working memory and taking up valuable mental resources can we experience what Allen calls a “mind like water” - the state where we can focus on the work right in front of us without getting distracted by competing thoughts. The principle is simple but holistic. It is not a quick fix or a fancy tool. It doesn’t do the work for you. But it does provide a structure for our everyday work that deals with the fact that most distractions do not come so much from our environment, but our own minds.”</li></ul><ul id="6b4bf5d0-17ab-4fb7-81ec-bd8963875189" class="bulleted-list"><li>But GTD doesn’t help with writing because it’s not linear. The ‘next steps’ are things like ‘look up this footnote’ or ‘write a paragraph’ or ‘reread a chapter’. Most of these are too small to be worth writing down, and it’s hard to anticipate what the next one should be. But if we zoom too far out, we get ‘write a page’ which is equally pointless.</li></ul><ul id="508d5bac-5f44-47b5-ba40-5e0bc8c0a661" class="bulleted-list"><li>The key is a holistic perspective. Everything needs to be taken care of, otherwise the neglected bits will nag us until the unimportant tasks become urgent. “Only if you can trust your system, only if you really know that everything will be taken care of, will your brain let go and let you focus on the task at hand”.</li></ul><ul id="7f855c35-73e7-4c47-bd29-e7c270815ce2" class="bulleted-list"><li>“That is why we need a note-taking system that is as comprehensive as GTD, but one that is suitable for the open-ended process of writing, learning and thinking. Enter the slip-box”.</li></ul></li></ul></details></li></ul><ul id="e3e3d7ee-c7f8-4155-84db-0ee3e07d3f0b" class="toggle"><li><details open=""><summary>1.2 - The Slip-Box</summary><ul id="c3d324d1-6fb1-4c80-af71-60815d586859" class="bulleted-list"><li>Nicklas [[Luhmann]] 1960s Germany. Enjoys reading - philosophy, organisational theory and sociology.</li></ul><ul id="35e9707d-0504-4a94-8d01-7f00a084e3ae" class="bulleted-list"><li>He wrote notes but soon realised his note-taking was pointless.</li></ul><ul id="4f73eb28-ee59-4b8f-a9e9-f1febe6d7495" class="bulleted-list"><li>So then, instead of adding notes to existing categories, he just wrote them all on small pieces of paper, put a number in the corner and put them in one place - the slip-box.</li></ul><ul id="3fb79615-67be-4b00-9d09-c75e14f97dbc" class="bulleted-list"><li>He started to think about how one idea could relate and contribute to different contexts.</li></ul><ul id="d8a24e48-b5b8-4834-a8b9-bda45290106f" class="bulleted-list"><li>“He realised that one idea, one note was only as valuable as its context, which was not necessarily the context it was taken from. So he started to think about how one idea could relate and contribute to different contexts. Just amassing notes in one place would not lead to anything other than a mass of notes. But he collected his notes in his slip-box in such a way that the collection became much more than the sum of its parts. His slip-box became his dialogue partner, main idea generator and productivity engine. It helped him to structure and develop his thoughts. And it was fun to work with – because it worked.”</li></ul><ul id="93a08542-9802-4af8-ab86-689be59649f4" class="bulleted-list"><li>He published a load of stuff. Famously productive. [[The World’s Most Productive Person]]#[[Video Idea]]<ul id="04e8b651-7358-44cb-b977-0f93c0aa96d2" class="bulleted-list"><li>Might make for a good video angle. Talking about his life, lots of voiceover, lots of b roll while telling the story. Maybe even artist illustrations. [[Luhmann]]</li></ul><ul id="fb678176-c6a4-4006-bad9-7bd8170fa03e" class="bulleted-list"><li>Alternative Title - The Most Productive Person You’ve Never Heard Of</li></ul><ul id="8ea66084-88ae-4bbe-855d-fc3fe2ed548b" class="bulleted-list"><li>” After doing extensive research on Luhmann’s workflow, the German sociologist Johannes F.K. Schmidt concluded his productivity could only be explained by his unique working technique (Schmidt 2013, 168). That technique has never been a secret – Luhmann was always open about it. He regularly mentioned the slip-box as the reason for his productivity. From as early as 1985, his standard answer to the question of how anyone could be so productive was: “I, of course, do not think everything by myself. It happens mainly within the slip-box” (Luhmann, Baecker, and Stanitzek 1987, 142). But few gave the slip-box and the way he worked with it a closer look, dismissing his explanation as the modest understatement of a genius.”</li></ul><ul id="a753ef72-74f7-4acd-8ce1-3f7c406c31fe" class="bulleted-list"><li>“ His productivity is, of course, impressive. But what is even more impressive than the sheer number of publications or the outstanding quality of his writing is the fact that he seemed to achieve all this with almost no real effort. He not only stressed that he never forced himself to do something he didn’t feel like, he even said: “I only do what is easy. I only write when I immediately know how to do it. If I falter for a moment, I put the matter aside and do something else.” (Luhmann et al., 1987, 154f.)[4]”</li></ul><ul id="0a2879b2-1277-4a7e-a1e9-c73dc126ad0e" class="bulleted-list"><li>“ Until recently, almost no one really seemed to believe it. We are still so used to the idea that a great outcome requires great effort that we tend not to believe that a simple change in our work routines could not only make us more productive, but the work also more fun. But doesn’t it make much more sense that the impressive body of work was produced not in spite of the fact he never made himself do anything he didn’t feel like, but because of it? Even hard work can be fun as long as it is aligned with our intrinsic goals and we feel in control. The problems arise when we set up our work in such an inflexible way that we can’t adjust it when things change and become arrested in a process that seems to develop a life of its own.”</li></ul></li></ul><ul id="ed88acf7-3a85-4f36-9d36-dae06eec8bba" class="bulleted-list"><li>“ Studies on highly successful people have proven again and again that success is not the result of strong willpower and the ability to overcome resistance, but rather the result of smart working environments that avoid resistance in the first place (cf. Neal et al. 2012; Painter et al. 2002; Hearn et al. 1998).” #[[Journal Club Idea]]<ul id="dcf621e6-e415-4f30-bb59-a5853d526c34" class="bulleted-list"><li>[[Journal Club]]<ul id="3f89620a-e090-4ce0-98ad-67ae8ea7817f" class="bulleted-list"><li>Maybe there’s scope for #Productivity to feature heavily in [[Journal Club]]. Combining brand value with the cerebral side by doing literature reviews.</li></ul></li></ul></li></ul></details></li></ul><ul id="7b676538-afe4-46fc-b3e9-2f2ef228e03d" class="toggle"><li><details open=""><summary>1.3 - The Slip-Box Manual</summary><ul id="f71b8928-ad9e-44ca-80a3-89e86ab33732" class="bulleted-list"><li>1. Bibliographical slip-box - “ Whenever he read something, he would write the bibliographic information on one side of a card and make brief notes about the content on the other side (Schmidt 2013, 170). These notes would end up in the bibliographic slip-box.”</li></ul><ul id="d64f9867-2642-49e7-94c8-63597d350758" class="bulleted-list"><li>2. Main slip-box</li></ul><ul id="648a1414-3b88-434a-ab4e-aaf299278bf9" class="bulleted-list"><li>“He did <em>not</em> just copy ideas or quotes from the texts he read, but made a transition from one context to another.” Like a translation where the message is the same but the words are different.</li></ul><ul id="f327a556-d195-48ea-ad89-38ad5388fbfc" class="bulleted-list"><li>Organisation of notes - <em>not by topic</em>. Instead by fixed numbers.<ul id="fecc50e8-ed64-4ff9-ade1-9b76abae533f" class="bulleted-list"><li>Full description of method in the book [[How to Take Smart Notes]]</li></ul><ul id="1b278205-714f-49f2-9e25-6cff7ea5b00d" class="bulleted-list"><li>There is another reason that note-taking flies mostly under the radar: We don’t experience any immediate negative feedback if we do it badly. But without an immediate experience of failure, there is also not much demand for help. And the publishing market working how it works, there is not much help in supply for this lack of demand either.</li></ul></li></ul></details></li></ul></details></li></ul><ul id="43330124-4bcb-420c-8968-ef06508e5438" class="toggle"><li><details open=""><summary>2 - Everything you need to do</summary><ul id="b5c03db9-e1e0-48b8-ae25-a9b75f91d0e5" class="toggle"><li><details open=""><summary>2.0 - Intro</summary><ul id="46a292d7-8338-4aa3-9305-74eb313dd330" class="bulleted-list"><li>“Each step is straightforward and well-defined: (1) assemble notes and bring them into order, (2) turn these notes into a draft, (3) review it and you’re done. “</li></ul><ul id="9269fd21-20ae-4e17-ba8a-04c3f4e7bf4f" class="bulleted-list"><li>“Writing is, without dispute, the best facilitator for thinking, reading, learning, understanding and generating ideas we have.“</li></ul><ul id="dfa78eef-0c64-4520-bfc4-de6aa9afada5" class="bulleted-list"><li>“Notes build up while you think, read, understand and generate ideas, because you have to have a pen in your hand if you want to think, read, understand and generate ideas properly anyway.”</li></ul><ul id="508640ee-cd8d-4ae2-a063-5ff1c690c1f7" class="bulleted-list"><li>“ “Notes on paper, or on a computer screen [...] do not make contemporary physics or other kinds of intellectual endeavour easier, they make it possible,” neuroscientist Neil Levy concludes in the introduction to the Oxford Handbook of Neuroethics, summarizing decades of research.”</li></ul><ul id="45e98e8f-aa51-4fef-9971-5c6039365850" class="bulleted-list"><li>“ You have to externalise your ideas, you have to write. Richard Feynman stresses it as much as Benjamin Franklin. If we write, it is more likely that we understand what we read, remember what we learn and that our thoughts make sense. And if we have to write anyway, why not use our writing to build up the resources for our future publications?”</li></ul></details></li></ul><ul id="2c03d7ff-da69-423a-a5d7-2539be1a8da6" class="toggle"><li><details open=""><summary>2.1 - Writing a paper Step by Step (3 types of notes + slipbox method overview)</summary><ul id="364387ad-3b45-45ef-bfdb-6b6d68d4faff" class="bulleted-list"><li><strong>1. Make fleeting notes.</strong> Always have a Quick Capture inbox where you can just chuck stuff and worry about processing it later.</li></ul><ul id="e16d3ad0-bcf8-4f5c-aa16-2fe4838a15c8" class="bulleted-list"><li><strong>2. Make literature notes</strong>. Whenever you read something (and by extension, watch and listen to something), make notes about the content. Write down: (a) what you don’t want to forget, (b) what you might use later, (c) use your own words. Keep it short, be extremely selective. Be even more selective about quotes.</li></ul><ul id="3f186011-c09c-44f5-99e2-df1f8b5b1769" class="bulleted-list"><li><strong>3. Make permanent notes</strong>. Go through your inbox once a day ideally, think about how these notes relate to your own stuff (research, thinking, interests). Don’t just collect ideas. Develop ideas, arguments, discussions. Does the new information contradict, correct, support or add to what you already have (in your slip-box or your mind)? Can you combine ideas to generate something new? What questions are triggered by them?<ul id="fb4c994c-0655-4714-9e78-ed6a978ce16c" class="bulleted-list"><li>Write exactly one note for each idea, and write as if you’re writing for someone else. Use full sentences, disclose your sources, make references, try to be as precise, clear, brief as possible. Throw away fleeting notes from step 1, put the literature notes from step 2 into your reference system. You can forget about them now. All that matters is going into the slip box.</li></ul></li></ul><ul id="9ad11930-0efe-47d6-b0c2-00dc8bcac2ab" class="bulleted-list"><li><strong>4. Now, add your permanent notes to the slip-box by</strong><ul id="a0b68e5f-cf77-4605-b4d0-7d62aa76b0dc" class="bulleted-list"><li>(a) Filing each behind one/more related notes.</li></ul><ul id="73c637f8-95a6-4e48-9324-a5d3305a008e" class="bulleted-list"><li>(b) Adding links to related notes</li></ul><ul id="c078ec29-489d-4b61-8a34-782153ef8e83" class="bulleted-list"><li>(c) Make sure you can find this later - either link to it from your index, or make a link to it on a ‘Topic’ note.</li></ul></li></ul><ul id="0dd438a9-2052-47ea-b50e-1c4976a2a606" class="bulleted-list"><li><strong>5. Develop your topics, questions and research projects bottom up from within the system</strong>.<ul id="4b4c2137-1f75-4459-936f-adcd43aae072" class="bulleted-list"><li>Do not brainstorm for a topic. <em>Look</em> into the slip box to see where chains or notes / ideas have been built up into clusters.</li></ul><ul id="c9b2d89f-834c-4abb-a41e-184612f0b1b9" class="bulleted-list"><li>The more you become interested in something, the more you’ll think and read about it, the more notes you’ll collect, the more likely you’ll generate questions from it.</li></ul></li></ul><ul id="e924610d-1e28-4a45-822d-863d7b486d3f" class="bulleted-list"><li>6. Decide on a topic to write about</li></ul><ul id="1c726e4c-68a7-46d8-8152-17a7676ef5f5" class="bulleted-list"><li>7. Turn your notes into a rough draft. Don’t just copy them. <em>Translate</em> them into something coherent and embed them into the context of your argument while you build your argument out of the notes at the same time.</li></ul><ul id="796c3493-db97-4542-8429-cb9b8dbd263b" class="bulleted-list"><li>8. Edit and proofread the manuscript</li></ul><ul id="b6c94850-1a26-49c9-aae5-1522a807d189" class="bulleted-list"><li>Meno’s Paradox - It’s highly unlikely that every text you read will contain exactly the information you looked for and nothing else. Otherwise, you must have already known what was in there and wouldn’t have had reason to read it in the first place.</li></ul></details></li></ul></details></li></ul><ul id="bf2ba578-409f-42b0-8249-8ce731588c24" class="toggle"><li><details open=""><summary>3 - Everything you need to have</summary><ul id="58c9fdcd-3aac-4b1b-9b0b-748950e07c89" class="bulleted-list"><li>“There is this story where NASA tried to figure out how to make a ballpoint pen that works in space. If you have ever tried to use a ballpoint pen over your head, you have probably realised it is gravity that keeps the ink flowing. After a series of prototypes, several test runs and tons of money invested, NASA developed a fully functional gravity-independent pen, which pushes the ink onto the paper by means of compressed nitrogen. According to this story, the Russians faced the same problem. So they used pencils (De Bono, 1998, 141). The slip-box follows the Russian model: Focus on the essentials, don’t complicate things unnecessarily.” </li></ul><ul id="3f4fad06-ca1a-4043-9593-38208dc21c15" class="bulleted-list"><li>Keep things simple. The workflow is important, not the app.</li></ul></details></li></ul><ul id="1ccb3160-4d46-4662-83b4-1f3fd726be5a" class="toggle"><li><details open=""><summary>4 - A few things to keep in mind</summary><p id="cbf607db-1cb9-4026-941f-9acd63c7a3ba" class="">“Tools are only as good as your ability to work with them”</p></details></li></ul><p id="5889c41e-def7-45e0-8da6-0da9ab358b63" class="">The 4 Underlying Principles</p><ul id="b95b1cfd-78c3-4f01-85d0-9eb0ca131709" class="toggle"><li><details open=""><summary>5 - Writing is the only thing that matters</summary><ul id="b9cfc934-7499-4962-8335-016a08e54bf5" class="bulleted-list"><li>Traditional (student) thinking = writing is a form of examination. You <em>demonstrate</em> what you’ve learned etc through writing. First you get a task to write. Then you have to find a topic / angle, find the research, read the material, understand the material, process it, come to a conclusion. “ This, according to this thinking, prepares you for doing independent research. Alas, it does not. If you become successful in your research, it was not because you learned to approach writing in this way, but despite it.”</li></ul><ul id="7d29c631-12e8-4b79-9dec-8b4f98aa895d" class="bulleted-list"><li>“This book is based on another assumption: <strong>Studying does not prepare students for independent research. It is independent research</strong>. Nobody starts from scratch and everybody is already able to think for themselves. Studying, done properly, is research, because it is about gaining insight that cannot be anticipated and will be shared within the scientific community under public scrutiny. There is no such thing as private knowledge in academia. An idea kept private is as good as one you never had. And a fact no one can reproduce is no fact at all. Making something public always means to write it down so it can be read. There is no such thing as a history of unwritten ideas.“</li></ul><ul id="7e3e02a5-373e-42c8-b393-43704c25e54b" class="bulleted-list"><li>Focus on writing. Writing is the medium to share ideas. Ideas that you don’t share are as useless as ideas that you’ve never had. Focus on writing.</li></ul><ul id="e6465baa-d6b2-449b-bb09-bfcf2e6ebbbd" class="bulleted-list"><li>This doesn’t mean you should do everything less well. Instead, do everything else <em>differently</em>. “ Having a clear, tangible purpose when you attend a lecture, discussion or seminar will make you more engaged and sharpen your focus. You will not waste your time with the attempt to figure out what you “should” learn. Rather, you will try to learn as efficiently as possible so you can quickly get to the point where actual open questions arise, as these are the only questions worth writing about.”</li></ul><ul id="80c0d8ed-9541-4472-919a-6f23b572b3bf" class="bulleted-list"><li>AA - Resonates. Medicine example - reading for the purpose of figuring out wtf to do with a patient makes the reading more fun, more engaging, more purposeful. Teaching example - reading with the intent to understand so that I can teach makes the reading more fun and interesting. Student example - reading with the purpose of memorising with the purpose of getting more points in the exam game... is sort of fun but not that interesting. YouTuber example - reading / researching with the intent to make a video about makes the topic 10x more interesting and engaging. But not just when I’m rehashing things, more when I’m synthesising and remixing.</li></ul><ul id="cd5297ec-d08a-412e-a23d-b3f4eaf4dc0b" class="bulleted-list"><li>“Even if you decide never to write a single line of a manuscript, you will improve your reading, thinking and other intellectual skills just by doing everything <em>as if nothing counts other than writing.</em>”</li></ul><ul id="621cd91a-bce0-443f-9098-d31b3e46cd15" class="bulleted-list"><li>AA - <em>Nothing counts other than writing</em>. This is great stuff. I’ve long felt... ‘dirty’ about the mercenary nature of my consumption. I consume to create. Every podcast I listen to these days, I’m thinking ‘what are the interesting points from here that I can turn into a video’. Or if it’s a specific problem I’m dealing with ‘how can I apply what I’ve learned here to my life’ (eg: recent podcasts about management, leadership, VA etc). In a way, I’m acting <em>as if nothing else counts</em>. All consumption becomes more purposeful, more engaging, more interesting, when you [[consume to create]].<ul id="72e7529b-742d-40ec-bff8-a93951431caf" class="bulleted-list"><li>Medicine analogy - “how will this change management?” If it won’t, then it’s purely academic.</li></ul><ul id="4ad2ff1c-3b51-42ef-8e65-0b1ca72a5862" class="bulleted-list"><li>Reading / watching the news? Boring. I’ve never done it with the intent to create / understand.</li></ul><ul id="2e021b37-ba93-4ff8-9063-fec42b05c103" class="bulleted-list"><li>Since I started writing the [[email newsletter]] 2 years ago, my consumption has become more purposeful. Not purposeful actually, but more... intentional? Purposeful as in “having a point”. Because I know that every week I have to share what I’m consuming and therefore I’m more inclined to make some notes about it and think about the effect it’s having on me.</li></ul></li></ul></details></li></ul><ul id="e3c483cf-6656-4cf1-9501-6e522766a8fa" class="toggle"><li><details open=""><summary>6 - Simplicity is paramount</summary><ul id="ac74b63c-cdb6-4a55-a2c8-4a7a51816dce" class="bulleted-list"><li>Nice example of shipping containers. #Example</li></ul><ul id="13a57b95-01ad-4f14-902e-2aed04f18f6a" class="bulleted-list"><li>“ Many students and academic writers think like the early ship owners when it comes to note-taking. They handle their ideas and findings in the way it makes immediate sense: If they read an interesting sentence, they underline it. If they have a comment to make, they write it into the margins. If they have an idea, they write it into their notebook, and if an article seems important enough, they make the effort and write an excerpt. Working like this will leave you with a lot of different notes in many different places. Writing, then, means to rely heavily on your brain to remember where and when these notes were written down. A text must then be conceptualised independently from these notes, which explains why so many resort to brainstorming to arrange the resources afterwards according to this preconceived idea. In this textual infrastructure, this so-often-taught workflow, it indeed does not make much sense to rewrite these notes and put them into a box, only to take them out again later when a certain quote or reference is needed during writing and thinking.”</li></ul><ul id="1e40e15f-2eaa-4fd4-8e11-44ba84682641" class="bulleted-list"><li>“ In the old system, the question is: Under which topic do I store this note? In the new system, the question is: In which context will I want to stumble upon it again?“</li></ul><ul id="459d828d-8f8d-41e3-ae5e-0406e099b191" class="bulleted-list"><li>Most students sort their material by topic or even by seminars and semester. From the perspective of someone who writes, that makes as much sense as sorting your errands by purchase date and the store they were bought from. Can’t find your trousers? Maybe they are with the bleach you bought the same day at your department store.”<ul id="b7ea5a17-f726-48d2-a9a6-4e3fa5f4a09c" class="bulleted-list"><li>AA - Disagree with this example. Seminars and semesters; “Respiratory physiology seminars” going together makes sense. Maybe Sonke’s referring more to arts subjects, where seminars and semesters are completely unrelated?</li></ul></li></ul><ul id="6422a2b8-e072-48d6-93a6-b32ad2aedabc" class="bulleted-list"><li>“The slip-box is the shipping container of the academic world”. Everything goes into the same box, it’s standardised into the same format. Everything is streamlined towards one thing only - insight that can be published.</li></ul><ul id="85d215b2-7499-44b9-aa6d-69f432dba5bb" class="bulleted-list"><li>Biggest advantage compared to a top-down system organised by topics = that slip box becomes more valuable as it grows. With topic-organisation, you either add more notes to a topic (makes them hard to find?? dubious) or add more and more topics and subtopics which shifts the mess to another level.</li></ul><ul id="93f84eb7-3ef8-4b79-a5be-ebea87a7592b" class="bulleted-list"><li>The first system (topic organisation top down) is designed to find things you deliberately search for, putting all the responsibility on your brains (dubious). <strong>The slip-box is designed to present you with ideas you’ve already forgotten, allowing your brain to focus on thinking instead of remembering.</strong></li></ul><ul id="9fdfffb9-497d-4634-991a-25495e42e8fa" class="bulleted-list"><li>To achieve a critical mass, we need to separate into 3 types of note: (1) fleeting notes, (2) permanent notes, (3) project notes.<ul id="7f840d67-533c-4fe5-8102-2945d84842c3" class="bulleted-list"><li>1. Fleeting notes - end up in the trash within a day or 2 (drafts / notes)<ul id="57276e6e-32de-4eeb-afd9-be36655f02e8" class="bulleted-list"><li>“Fleeting notes are only useful if you review them within a day or so and turn them into proper notes you can use later.“</li></ul></li></ul><ul id="287c59e7-1c12-4008-b658-82ca32af0b8b" class="bulleted-list"><li>2. Permanent Notes - these will never be thrown away, they contain the necessary information in a permanently understandable way. Always stored in the same place, either in the reference system or, written as if for print, in the slip box.<ul id="1596e163-9847-49e3-b3b8-fe2cb8f1ce29" class="bulleted-list"><li>“ Permanent notes, on the other hand, are written in a way that can still be understood even when you have forgotten the context they are taken from.”</li></ul></li></ul><ul id="2f9c25eb-4d07-45ab-8286-f4f338e40228" class="bulleted-list"><li>3. Project notes - only relevant to a particular project, discarded or archived once the project’s finished.</li></ul><ul id="aa4b0408-9190-40f4-8883-9fbccad12327" class="bulleted-list"><li><strong>AA - Key Point</strong> - I’ve been using [[Roam]] for project notes as well, eg: ipad review, video labs. The video labs stuff I guess is useful to help me think about target audience, brand etc? Do those tie in with the sorts of stuff I want permanent notes on? Or can they just be chucked in Notion. Notion for project notes (but Evernote for quick storing content about projects). Drafts for fleeting notes. Roam for permanent notes.<ul id="553b4306-4695-4686-a7d1-8954064a032c" class="bulleted-list"><li>Maybe using PARA across all the apps would help?</li></ul></li></ul><ul id="9000726d-e1f3-4d02-b24f-3565353eeec2" class="bulleted-list"><li>“ A typical mistake is made by many diligent students who are adhering to the advice to keep a scientific journal. A friend of mine does not let any idea, interesting finding or quote he stumbles upon dwindle away and writes everything down. He always carries a notebook with him and often makes a few quick notes during a conversation. The advantage is obvious: No idea ever gets lost. The disadvantages are serious, though: As he treats every note as if it belongs to the “permanent” category, the notes will never build up a critical mass. The collection of good ideas is diluted to insignificance by all the other notes, which are only relevant for a specific project or actually not that good on second sight. On top of that, the strict chronological order does not offer any help to find, combine or rearrange ideas in a productive sense. It is not surprising that my friend has a bookshelf filled with notebooks full of wonderful ideas, but not a single publication to show.”</li></ul><ul id="4a21bab1-15b1-4d3a-9724-9eca803bc821" class="bulleted-list"><li><strong>“The notes are no longer reminders of thoughts or ideas, but contain the actual thought or idea in written form. This is a crucial difference.</strong></li></ul></li></ul></details></li></ul><ul id="491a0f2a-60d4-48a6-89a2-6d025e800db6" class="toggle"><li><details open=""><summary>7 - Nobody ever starts from scratch</summary><p id="009f354c-4691-444a-92f4-b3e602976df9" class="">“The white sheet of paper – or today: the blank screen – is a fundamental misunderstanding” (Nassehi 2015, 185) </p></details></li></ul><ul id="f1b2292c-2e41-49ec-96bc-c522ce25c14f" class="toggle"><li><details open=""><summary>8 - Let the work carry you forward</summary><ul id="e4906183-c2fa-4680-91e3-0c03f7179d0a" class="bulleted-list"><li>“You may remember from school the difference between an exergonic and an endergonic reaction. In the first case, you constantly need to add energy to keep the process going. In the second case, the reaction, once triggered, continues by itself and even releases energy. The dynamics of work are not so different. Sometimes we feel like our work is draining our energy and we can only move forward if we put more and more energy into it. But sometimes it is the opposite. Once we get into the workflow, it is as if the work itself gains momentum, pulling us along and sometimes even energizing us. This is the kind of dynamic we are looking for.” #studying #motivation #productivity</li></ul><ul id="1a781847-1ec4-411b-86e0-d0290c38ad9d" class="bulleted-list"><li>“A good workflow can easily turn into a virtuous circle, where the positive experience motivates us to take on the next task with ease, which helps us to get better at what we are doing, which in return makes it more likely for us to enjoy the work, and so on. But if we feel constantly stuck in our work, we will become demotivated and much more likely to procrastinate, leaving us with fewer positive or even bad experiences like missed deadlines. We might end up in a vicious circle of failure (cf. Fishbach, Eyal and Finkelstein, 2010).” #studying #workflow</li></ul><ul id="22370037-8ec0-4920-8cf2-ff677bcd12ac" class="bulleted-list"><li>“Any attempts to trick ourselves into work with external rewards (like doing something nice after finishing a chapter) are only short-term solutions with no prospect of establishing a positive feedback loop. These are very fragile motivational constructions. Only if the work itself becomes rewarding can the dynamic of motivation and reward become self-sustainable and propel the whole process forward (DePasque and Tricomi, 2015).” #[[Journal Club Idea]]</li></ul><ul id="b0fcea2b-d3e7-45e7-98fc-f024bbb70eb1" class="bulleted-list"><li>“Feedback loops are not only crucial for the dynamics of motivation, but also the key element to any learning process.” “ Nothing motivates us more than the experience of becoming better at what we do. And the only chance to improve in something is getting timely and concrete feedback.”</li></ul><ul id="7f949866-ffba-4f0e-8dbb-ae17fcd35e59" class="bulleted-list"><li>“Embracing a growth mindset means to get pleasure out of changing for the better (which is mostly inwardly rewarding) instead of getting pleasure in being praised (which is outwardly rewarding). The orientation towards the latter makes one stick to safe, proven areas. The orientation towards the first draws the attention to the areas most in need of improvement. To seek as many opportunities to learn as possible is the most reliable long-term growth strategy. And if growth and success are not reasons enough, then maybe the fact that the fear of failure has the ugliest name of all phobias: Kakorrhaphiophobia.”</li></ul></details></li></ul><p id="9c5ba9c7-1102-4297-83c3-4dd9ab2d02dd" class="">The 6 Steps to Successful Writing </p><ul id="ad3a52dc-4f2e-4887-ad94-86c7767a6d43" class="toggle"><li><details open=""><summary>9 - Separate and interlocking tasks</summary><ul id="f81f0a3f-d8db-4b31-ba07-0952935c647f" class="toggle"><li><details open=""><summary>9.1 - Give each task your undivided attention</summary></details></li></ul><ul id="341f572b-1463-419b-9b73-59b77d4cd69a" class="toggle"><li><details open=""><summary>9.2 - Multitasking is not a good idea</summary></details></li></ul><ul id="a197bcfa-aac3-48e0-8e9b-cbba57265b47" class="toggle"><li><details open=""><summary>9.3 - Give each task the right kind of attention</summary></details></li></ul><ul id="435de9bc-7a27-40c6-872e-103862a5d404" class="toggle"><li><details open=""><summary>9.4 - Become an expert instead of a planner</summary><ul id="354d5894-1802-47f7-9f81-7eeec20f05d2" class="bulleted-list"><li>“The moment we stop making plans is the moment we start to learn”.</li></ul></details></li></ul><ul id="a7b3373a-f490-4782-b293-9d507e8c6783" class="toggle"><li><details open=""><summary>9.5 - Get closure</summary></details></li></ul><ul id="ac68c105-1d05-4a76-9081-4b441f7e7016" class="toggle"><li><details open=""><summary>9.6 - Reduce the number of decisions</summary><ul id="a5612a90-9e71-4188-8508-e992dabc5b4a" class="bulleted-list"><li>“ Instead of forcing ourselves to do something we don’t feel like doing, we need to find a way to make us feel like doing what moves our project further along.” #motivation</li></ul></details></li></ul></details></li></ul><ul id="525fa16d-bade-45d9-a8f0-deddddfe4979" class="toggle"><li><details open=""><summary>10 - Read for understanding</summary><ul id="5dddf273-18eb-49c9-957b-42b44c4441de" class="bulleted-list"><li>10.1 - Read with a Pen in Hand - Note-taking is an important part of reading for understanding or insight. </li></ul><ul id="c21bc24e-ee8b-41f4-99cb-e87c28c8021e" class="bulleted-list"><li>10.2 - Keep an Open Mind<ul id="13ecfa8e-a7f7-4add-8583-56cdaf298667" class="bulleted-list"><li>Be selective in a smart way. </li></ul><ul id="f8e8e579-3f04-41d1-8d55-3a7e5069be0d" class="toggle"><li><details open=""><summary>Beware of confirmation bias. </summary><blockquote id="caa64c86-2006-4b18-9073-ff14cbb98b44" class="">Instead of having the hypothesis in mind all the time, we want to: · Confirm that we have separated tasks and focus on understanding the text we read, · Make sure we have given a true account of its content · Find the relevance of it and make connections.</blockquote></details></li></ul></li></ul><ul id="5afe0b27-dd6e-41de-82a8-75376dc44904" class="bulleted-list"><li>10.3 - Get the gist.  - <ul id="87558349-1709-4b29-b948-0d6d7b18e6ff" class="toggle"><li><details open=""><summary> </summary><blockquote id="2d0bf022-f2b7-403c-8be8-8ff3af07cd50" class="">Elaboration means nothing other than really thinking about the meaning of what we read, how it could inform different questions and topics and how it could be combined with other knowledge. In fact, “Writing for Learning” is the name of an “elaboration method” (Gunel, Hand, and Prain 2007). </blockquote><ul id="f0401f9d-6a65-4097-a1bc-c23ae460f232" class="bulleted-list"><li>The slip-box (read: second brain) takes cares of storing facts and information. It can&#x27;t take <em>thinking </em>and <em>understanding </em>off your shoulders. </li></ul></details></li></ul><ul id="d3be611e-8719-4043-b873-ca47a25e0a03" class="toggle"><li><details open=""><summary> </summary><ul id="98b5e827-c2d8-4949-a214-ebc516aad43a" class="bulleted-list"><li>Getting the gist is an important part of reading. It&#x27;s a skill we can improve over time. It leads to a virtuous cycle where we become better at spotting patterns, so our reading becomes faster and we understand more stuff. </li></ul></details></li></ul><ul id="1304f5eb-8ba0-4c04-8166-1dc747e63c86" class="toggle"><li><details open=""><summary> </summary><ul id="62ac29e8-c9b2-453d-82d8-4c6d0f80e1e8" class="bulleted-list"><li>We need to develop our ability to figure out what&#x27;s important from a text (or anything that we&#x27;re consumnig for understanding / insight). By doing this deliberately over the long term, we work our muscle of original thought. <ul id="4c05a92c-eba3-4f9d-9713-a1d7a1e0099b" class="bulleted-list"><li>Kant (1784): &quot;Immaturity is the inability to use one&#x27;s own understanding without another&#x27;s guidance. This immaturity is self-imposed if its cause lies not in lack of understanding but in indecision and lack of courage to use one&#x27;s own mind without another&#x27;s guidance. Dare to know!&quot;. </li></ul><ul id="290ed825-ca39-43f8-89ef-471bed8f7861" class="bulleted-list"><li>Luhmann - &quot;One has to read extremely selectively and extract widespread and connected references... probably the best method is to take notes. Not excerpts, but condensed, reformulated accounts of a text. Rewriting what was already written almost automatically trains one to shift the attention towards frames, patterns and categories in the observations, or the conditions / assumptions, which enable certain, but not other descriptions. </li></ul><ul id="dfc9175f-c1d4-415b-8652-b521f7d72514" class="bulleted-list"><li>As you get better at this, the shorter and more condensed your own notes will be. </li></ul></li></ul></details></li></ul></li></ul><ul id="857b9c53-38d9-4644-9161-9738de3615ee" class="bulleted-list"><li>10.4 - Learn to Read<ul id="da6b089a-8897-4dac-a546-08e49df19b32" class="toggle"><li><details open=""><summary> </summary><ul id="34fbecdd-0b83-4fb6-aba6-a7fab9227c0d" class="bulleted-list"><li>If you truly understand something, you&#x27;ll be able to give an introductory lecture about it. At least that&#x27;s what Feynmann once said. This is the level of understanding I&#x27;ve always wanted to understand medical concepts with - the question in my mind being <em>Could I explain this to a student in the year below? </em>or alternatively <em>Could I explain this to a 5-year old? </em><ul id="725e3e34-678f-409b-9f83-185a22b9b775" class="bulleted-list"><li>I find my rules for this changing with every additional unit of output I add to my life. Eg: reading / listening to stuff with the question <em>Could I talk about this in a YouTube video? </em>Then when the podcast started, it changed to <em>Could this make for a good YouTube video AND/OR Would this make for an interesting discussion on the podcast? </em><ul id="a515a0ac-fbcd-48f4-a216-be3ce139638c" class="bulleted-list"><li>To discuss stuff on the podcast, I need to understand it in enough detail to make a compelling case for it to my brother. </li></ul></li></ul><ul id="bac08361-46a4-4d2f-b5ce-1dfec7361f5f" class="bulleted-list"><li>And now that I&#x27;m also writing book summaries and book notes, I guess when reading books, I&#x27;ll want to understand them to the point to be able to write a decent summary. </li></ul><ul id="f3b88538-b157-48ff-b503-ad2fc7940d8b" class="bulleted-list"><li>Another reason why everyone should be a creator?  </li></ul></li></ul></details></li></ul><ul id="6abd6247-5f27-4e9b-98f5-b6ae324417b8" class="toggle"><li><details open=""><summary> </summary><ul id="2300dc41-55ba-45ff-a6ee-65ce4a290dfd" class="bulleted-list"><li>When we re-read, we give ourselves the illusion of understanding. We mistake familiarity for understanding. (We also tend to like things more the more often we&#x27;re exposed to them). Reading with a pen in hand (ie: taking notes, creating artefacts etc) combats this tendency. </li></ul></details></li></ul><ul id="38428356-5a49-4c83-9ed4-fafe22d6876f" class="toggle"><li><details open=""><summary> </summary><ul id="72679e9d-59ac-42f8-bea3-4b4eb0e2f374" class="bulleted-list"><li>It&#x27;s only when we <em>test ourselves </em>that we can be sure about whether we truly <em>understand </em>something or if we&#x27;re just <em>familiar </em>with it. The litmus test for this is . </li></ul><ul id="8a300bf5-c269-41c8-8217-175032ad0092" class="bulleted-list"><li>Another test for this is rewriting the stuff in our own words without looking. <ul id="58d28440-5898-49e5-8ca2-7acfec780594" class="bulleted-list"><li>Although is this helpful? We know that summarising stuff is generally bad (at least, summarising with the book open). Where we&#x27;re reading the text and then putting it into our own words, or just writing it verbatim. Often we write verbatim. Are our own words significantly better? </li></ul></li></ul></details></li></ul></li></ul><ul id="90c31df8-68d5-41d2-8ecd-b48595fecee2" class="bulleted-list"><li>10.5 - Learn by Reading<ul id="8ae3fd90-a921-42e8-aa7f-5b68b4f2ef41" class="toggle"><li><details open=""><summary> </summary><ul id="7e1e1678-eebc-4994-ab13-13b7ad873a67" class="bulleted-list"><li>Learning requires effort. This idea is still very much underrated. </li></ul></details></li></ul><ul id="acc61453-5355-4b39-9ea2-b6b95c67cfcc" class="toggle"><li><details open=""><summary> </summary><ul id="dad1f42b-e1fe-4c0b-811a-bb92b71828af" class="bulleted-list"><li>Methods that teachers use are often focused on making the students&#x27; lives more convenient. We categorise things nicely, we split stuff into syllabuses and topics. We prepare &#x27;presentations&#x27; to teach them topics. We stick to one topic at a time so as not to confuse them. </li></ul><ul id="148b4c7c-ee47-4fb5-ac3d-d46778675202" class="bulleted-list"><li>But in doing so, we deprive the students of the <em>effort </em>they need to put in to truly understand stuff. We focus on not annoying them, but in doing so we hinder their learning. </li></ul><blockquote id="997a4df3-70ed-4f6e-beac-b41711d5fdbb" class="">It would be surprising if teachers changed the topic in the middle of the lesson, moving on to the next chapter before anyone had the chance to really understand the first one, only to come back to the previous topic later. It would also be unexpected to test the students constantly, half of the time about things that weren’t even mentioned yet. But as much as it would probably annoy the students, who are used to having their material presented in neat categories, it would force them to make sense of what they encounter – and that would make them really learn it.</blockquote></details></li></ul></li></ul></details></li></ul><ul id="3a773075-4ddb-4ef2-a695-cfeb10e28721" class="toggle"><li><details open=""><summary>11 - Take smart notes</summary><ul id="214efa7e-a69b-49ac-8ac7-1cb3c3775202" class="toggle"><li><details open=""><summary>It&#x27;s not possible to think systematically without writing.</summary><ul id="e4527e6e-10f5-4692-aa3d-5367e4e309d9" class="bulleted-list"><li>The mind is reliant on external scaffolding. </li></ul><ul id="b5750abb-c677-4108-b7e5-d8388226abf1" class="bulleted-list"><li>Most of us think of thinking as an internal process, and consider <em>writing </em>to be the art of putting that thinking to paper. </li></ul><ul id="0e280c34-37d3-4a98-adaf-59a2eda99b05" class="bulleted-list"><li>But Luhmann and Feynmann would argue that writing <em>is </em>thinking. The thinking happens through the medium of writing. </li></ul><ul id="fa0cf6bb-1027-4635-a63f-206b1045ac74" class="bulleted-list"><li>Story from Feynmann - One time a historian visited his office and saw loads of notebooks. He said &quot;wow, what a delight it is to see the record of your thinking&quot;. Feynmann said &quot;no no, this isn&#x27;t a record of my thinking, it <em>is </em>my thinking&quot;. The historian said &quot;Well the work was done in your head, but the record of it is still here&quot;. Feynmann said &quot;No it&#x27;s not a record, not really. It&#x27;s working. You have to work on paper, and this is the paper&quot;. <ul id="bd634f2a-a8c4-4436-80aa-ed5dc691214f" class="toggle"><li><details open=""><summary>Illustrative quote from Levy 2011 Handbook of Neuroscientists</summary><blockquote id="152e1a1a-f822-4745-9598-788a7f4e4fd9" class="">“Notes on paper, or on a computer screen [...] do not make contemporary physics or other kinds of intellectual endeavour easier, they make it possible” is one of the key takeaways in a contemporary handbook of neuroscientists (Levy 2011, 290)</blockquote></details></li></ul></li></ul></details></li></ul></details></li></ul><ol id="5ce0fadc-de2d-4a3c-9f86-dcad043e1aac" class="numbered-list" start="1"><li>Develop ideas </li></ol><ol id="16518018-78d3-4c8e-9e25-60cf129dc079" class="numbered-list" start="2"><li>Share your insight</li></ol><ol id="8b55db8c-2377-4736-9d0b-01086066cccc" class="numbered-list" start="3"><li>Make it a habit</li></ol></div></article></body></html>

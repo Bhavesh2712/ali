@@ -1,0 +1,627 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Show Your Work!</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="7624c371-c227-438c-80ac-68216e9416df" class="page sans"><header><img class="page-cover-image" src="https://images-na.ssl-images-amazon.com/images/I/51N%2BBa1mYOL._AC_SY400_.jpg" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🔟</span></div><h1 class="page-title">Show Your Work!</h1><table class="properties"><tbody><tr class="property-row property-row-text"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesText"><path d="M7,4.56818 C7,4.29204 6.77614,4.06818 6.5,4.06818 L0.5,4.06818 C0.223858,4.06818 0,4.29204 0,4.56818 L0,5.61364 C0,5.88978 0.223858,6.11364 0.5,6.11364 L6.5,6.11364 C6.77614,6.11364 7,5.88978 7,5.61364 L7,4.56818 Z M0.5,1 C0.223858,1 0,1.223858 0,1.5 L0,2.54545 C0,2.8216 0.223858,3.04545 0.5,3.04545 L12.5,3.04545 C12.7761,3.04545 13,2.8216 13,2.54545 L13,1.5 C13,1.223858 12.7761,1 12.5,1 L0.5,1 Z M0,8.68182 C0,8.95796 0.223858,9.18182 0.5,9.18182 L11.5,9.18182 C11.7761,9.18182 12,8.95796 12,8.68182 L12,7.63636 C12,7.36022 11.7761,7.13636 11.5,7.13636 L0.5,7.13636 C0.223858,7.13636 0,7.36022 0,7.63636 L0,8.68182 Z M0,11.75 C0,12.0261 0.223858,12.25 0.5,12.25 L9.5,12.25 C9.77614,12.25 10,12.0261 10,11.75 L10,10.70455 C10,10.4284 9.77614,10.20455 9.5,10.20455 L0.5,10.20455 C0.223858,10.20455 0,10.4284 0,10.70455 L0,11.75 Z"></path></svg></span>Author</th><td>Austin Kleon</td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesDate"><path d="M10.8889,5.5 L3.11111,5.5 L3.11111,7.05556 L10.8889,7.05556 L10.8889,5.5 Z M12.4444,1.05556 L11.6667,1.05556 L11.6667,0 L10.1111,0 L10.1111,1.05556 L3.88889,1.05556 L3.88889,0 L2.33333,0 L2.33333,1.05556 L1.55556,1.05556 C0.692222,1.05556 0.00777777,1.75556 0.00777777,2.61111 L0,12.5 C0,13.3556 0.692222,14 1.55556,14 L12.4444,14 C13.3,14 14,13.3556 14,12.5 L14,2.61111 C14,1.75556 13.3,1.05556 12.4444,1.05556 Z M12.4444,12.5 L1.55556,12.5 L1.55556,3.94444 L12.4444,3.94444 L12.4444,12.5 Z M8.55556,8.61111 L3.11111,8.61111 L3.11111,10.1667 L8.55556,10.1667 L8.55556,8.61111 Z"></path></svg></span>Date Finished</th><td><time>@Jan 5, 2016</time></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M7,13 C10.31348,13 13,10.31371 13,7 C13,3.68629 10.31348,1 7,1 C3.68652,1 1,3.68629 1,7 C1,10.31371 3.68652,13 7,13 Z M3.75098,5.32278 C3.64893,5.19142 3.74268,5 3.90869,5 L10.09131,5 C10.25732,5 10.35107,5.19142 10.24902,5.32278 L7.15771,9.29703 C7.07764,9.39998 6.92236,9.39998 6.84229,9.29703 L3.75098,5.32278 Z"></path></svg></span>Fiction?</th><td><span class="selected-value select-value-color-gray">Non-Fiction</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesMultipleSelect"><path d="M4,3 C4,2.447715 4.447715,2 5,2 L12,2 C12.5523,2 13,2.447716 13,3 C13,3.55228 12.5523,4 12,4 L5,4 C4.447715,4 4,3.55228 4,3 Z M4,7 C4,6.447715 4.447715,6 5,6 L12,6 C12.5523,6 13,6.447716 13,7 C13,7.55228 12.5523,8 12,8 L5,8 C4.447715,8 4,7.55228 4,7 Z M4,11 C4,10.447715 4.447715,10 5,10 L12,10 C12.5523,10 13,10.447716 13,11 C13,11.55228 12.5523,12 12,12 L5,12 C4.447715,12 4,11.55228 4,11 Z M2,4 C1.44771525,4 1,3.55228475 1,3 C1,2.44771525 1.44771525,2 2,2 C2.55228475,2 3,2.44771525 3,3 C3,3.55228475 2.55228475,4 2,4 Z M2,8 C1.44771525,8 1,7.55228475 1,7 C1,6.44771525 1.44771525,6 2,6 C2.55228475,6 3,6.44771525 3,7 C3,7.55228475 2.55228475,8 2,8 Z M2,12 C1.44771525,12 1,11.5522847 1,11 C1,10.4477153 1.44771525,10 2,10 C2.55228475,10 3,10.4477153 3,11 C3,11.5522847 2.55228475,12 2,12 Z"></path></svg></span>Genres</th><td><span class="selected-value select-value-color-default">Business</span><span class="selected-value select-value-color-blue">Creativity</span><span class="selected-value select-value-color-gray">Life Advice</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M7,13 C10.31348,13 13,10.31371 13,7 C13,3.68629 10.31348,1 7,1 C3.68652,1 1,3.68629 1,7 C1,10.31371 3.68652,13 7,13 Z M3.75098,5.32278 C3.64893,5.19142 3.74268,5 3.90869,5 L10.09131,5 C10.25732,5 10.35107,5.19142 10.24902,5.32278 L7.15771,9.29703 C7.07764,9.39998 6.92236,9.39998 6.84229,9.29703 L3.75098,5.32278 Z"></path></svg></span>Notes Status</th><td><span class="selected-value select-value-color-pink">Ready for Publication</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><svg viewBox="0 0 14 14" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.4);flex-shrink:0;-webkit-backface-visibility:hidden" class="typesSelect"><path d="M7,13 C10.31348,13 13,10.31371 13,7 C13,3.68629 10.31348,1 7,1 C3.68652,1 1,3.68629 1,7 C1,10.31371 3.68652,13 7,13 Z M3.75098,5.32278 C3.64893,5.19142 3.74268,5 3.90869,5 L10.09131,5 C10.25732,5 10.35107,5.19142 10.24902,5.32278 L7.15771,9.29703 C7.07764,9.39998 6.92236,9.39998 6.84229,9.29703 L3.75098,5.32278 Z"></path></svg></span>Rating</th><td><span class="selected-value select-value-color-blue">Lifechanging</span></td></tr></tbody></table></header><div class="page-body"><h1 id="d91511f3-4f62-4f1f-b286-488b0540227c" class="">🚀 The Book in 3 Sentences</h1><ol id="f6667f5c-543e-427d-9412-18c8e33a8f7c" class="numbered-list" start="1"><li>Share your thoughts and your process and your work, online, for free. </li></ol><ol id="5cab6ede-ec2a-411e-ac4d-e87279bdfb5c" class="numbered-list" start="2"><li>You don’t need to be an expert to share your work - beginners can easily help other beginners. </li></ol><ol id="bee2ed75-f117-4af2-8edd-38d794bdbddd" class="numbered-list" start="3"><li>By sharing your work online, you’ll attract an audience of people who care about the same stuff you do - this can change your life. </li></ol><h1 id="108c59a3-14aa-4236-88c9-187ce90dee8a" class="">🎨 Impressions</h1><p id="8b331709-a5c8-4a35-b335-70c9dd174af9" class="">This is one of the three books that most changed my life (the others being  and  ).  </p><p id="ae55a7bf-3f35-4018-8852-8cbe493066ba" class="">It completely changed the way I thought about sharing stuff online, and encouraged me to start my blog in January 2016. </p><h2 id="6198e190-708b-4b8f-a4de-25e2cfa3ec8b" class="">Who Should Read It? </h2><p id="be8d769d-2c14-49d8-bb55-5ce42b93a51d" class="">I think this should be required reading for everyone in the world. If you’ve got an interest in creativity (of any sort) or entrepreneurship or business (of any sort), you should stop reading this and just read the book. </p><p id="fa006afb-0e14-4180-ab65-0b4ba2b16ae5" class="">Even if you don’t have the slightest interest in creativity, entrepreneurship or putting yourself out there in any capacity whatsoever, you should still read this because it’ll open up neural pathways and possibilities that you never knew existed. </p><p id="53b0e8f3-1629-4cc8-8989-9086b546143b" class="">It also takes less than 30 minutes to read, so you’ve got no reason not to. </p><h1 id="156bb565-c3d4-43c9-b2eb-12f0270977de" class="">☘️ How the Book Changed Me </h1><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e7a6962b-ef4e-4e58-8242-4d2070992dd8"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">How my life / behaviour / thoughts / ideas have changed as a result of reading the book.</div></figure><ul id="bdae9a0d-9735-436f-a37f-5b13b1da3f6a" class="bulleted-list"><li>It made me more comfortable with sharing my thoughts and my work online</li></ul><ul id="7e909ddd-aa8b-4717-b4c5-bbba3d0de927" class="bulleted-list"><li>It made me generally more comfortable with putting myself &#x27;out there&#x27;</li></ul><ul id="47c9fe23-00ea-450f-97aa-77394a1ee240" class="bulleted-list"><li>It made me start my blog </li></ul><ul id="25165c16-73ff-45f6-b9a4-d7cca29bbeee" class="bulleted-list"><li>Starting the blog was the first step to starting my YouTube channel a year later, and the YouTube channel changed my life </li></ul><h1 id="f7c7d122-38a4-4aa1-8138-00afcf894a0c" class="">✍️ My Top 3 Quotes</h1><ul id="fb2f7797-6574-463c-9714-e05fc7ccb891" class="bulleted-list"><li>Amateurs know that contributing something is better than contributing nothing </li></ul><ul id="da225fc0-5f3f-4ecf-aad4-5d671120598d" class="bulleted-list"><li>Carving out a space for yourself online, somewhere where you can express yourself and share your work, is still one of the best possible investments you can make with your time </li></ul><ul id="ae099ccf-0eaf-486e-9d1e-8c4f2b535acd" class="bulleted-list"><li>The minute you learn something, turn around and teach it to others. Share your reading list. Point to helpful reference materials. Create some tutorials and post them online. Use pictures, words, and video. Take people step-by-step through part of your process. As blogger Kathy Sierra says, “make people better at something they want to be better at”</li></ul><h1 id="3f694e88-2c90-4f20-bd2b-fa1403a0aa80" class="">📒 Summary + Notes</h1><h2 id="fb1aff53-57c8-467a-8dcc-b19470a05034" class="">A new way of operating</h2><p id="c9034022-676e-4468-9246-6b99070c43eb" class="">The world has changed. It’s no longer enough to just <em>make </em>stuff and hope that people find it. You have to be <em>findable. </em></p><p id="5322656d-52d0-4cfd-bf57-b41d22c29c72" class="">Think of your work as a never-ending process. You can share your process in a way that attracts others. </p><blockquote id="7d35c3cb-6528-43c8-8a10-3515b0faf0af" class="">Imagine if your next boss didn’t have to read your résumé because he already reads your blog. Imagine being a student and getting your first gig based on a school project you posted online. Imagine losing your job but having a social network of people familiar with your work and ready to help you find a new one. Imagine turning a side project or a hobby into your profession because you had a following that could support you.</blockquote><blockquote id="0f80b190-1fc5-4390-9ab0-75c16eac19b8" class="">Or imagine something simpler and just as satisfying: spending the majority of your time, energy, and attention practicing a craft, learning a trade, or running a business, while also allowing for the possibility that your work might attract a group of people who share your interests. </blockquote><blockquote id="76284f77-825f-49b0-96d1-746ebe651579" class="">All you have to do is show your work.</blockquote><h2 id="45a76d06-124f-45bf-a4c5-05ec849b0b42" class="">1. You don’t have to be a genius </h2><p id="50ceef88-a727-4706-93f5-574c0e4cc8cd" class=""><strong>Find a Scenius - </strong>We need to move away from the <em>lone genius </em>myth of creativity.</p><p id="aaed02b5-11c7-4bab-99dd-ca1b56828683" class="">“Scenius” is a healthier way to think about creativity - “a whole scene of people supporting each other, looking at each other’s work, copying from each other, stealing ideas, and contributing ideas”. </p><p id="be6c5b04-2d8b-44e7-9422-71939d953007" class="">Anyone can contribute to the scenius. You don’t have to be an expert. </p><p id="01f08df5-947e-4f6c-9c6b-ea6f2ec8ecbe" class=""><strong>Be an Amateur - </strong>Sometimes, amateurs have more to teach us than experts. An amateur understands the beginners mind. The expert doesn’t. </p><p id="ef3751bf-0fdc-424a-9774-9309466bda22" class="">Find something you want to learn. And learn it in front of others. Share your process. Share your successes, and more importantly, your failures. Help others who want to be on the same path. </p><h2 id="b0a18c53-051d-4c3d-bea6-1d4af5b8c410" class="">2. Think process, not product</h2><p id="a0b3bf36-4361-428b-b011-22df6ca6308a" class=""><strong>Take people behind the scenes - </strong>The <em>finished product </em>model of creativity is a relic of the pre-digital era. Where the only way artists could find an audience for their work was to show the finished product in all its glory. The internet has changed this. People really do want to see how the sausage gets made. Audiences want to see the person behind the product. </p><p id="f56f71b5-48f9-477f-ae25-d1f8ad91876b" class=""><strong>Become a documentarian of what you do - </strong>As Gary Vaynerchuk says, “document, don’t create”. Share screenshots as you’re going along. Take photos of your process. Write down your thoughts in a notebook. Whether you share it or not, documenting your process has its own rewards. </p><h2 id="8cce2898-ee80-44b5-ba22-30da19e193cf" class="">3. Share something small everyday </h2><p id="cc7da582-b846-4bd4-8fb2-5afabee85d0e" class=""><strong>Sharing vs Oversharing - </strong>Share stuff that might be helpful or interesting or entertaining to someone on the other side of the screen. </p><p id="b09ba174-58e9-4208-ab9c-4b69a724063c" class="">I think of it as “Will this potentially help at least one person in the world? If so, I should share it.”</p><p id="a9a8e163-242f-49f1-a93e-8ccacb416326" class=""><strong>Get your own domain name - </strong>You need a personal website. Yes, even you reading this now. You might not have anything to write yet. But trust me (and Austin) - you need a personal website. Go find a domain name, preferably www.[yourname].com, but if that’s not available, use another extension (eg: .co.uk, .com.pk, .io, .me etc, there are hundreds of them). Figure out how to install a blog on it (eg: Wordpress or Ghost, I prefer Ghost personally). Yes if you’ve never done this before it’ll take some time and you’ll have to do some Googling. But it’ll be one of the best investments you ever make with your time. </p><h2 id="4f981614-df45-4635-9fe2-10fb0acbbdcf" class="">4. Open up your cabinet of curiosities </h2><p id="7adaa2a8-050b-4346-a9e3-72cc09c3725c" class=""><strong>Share other people’s work - </strong>We all like different things. If you can share the stuff you like, if you can curate it for others, good things will happen. </p><p id="4d3e2d7b-3527-4dcc-bb0e-a33389997f19" class=""><strong>Credit is always due - </strong>Obviously, if you’re sharing other people’s work, you want to credit them. Attribution = providing context for what you’re sharing. It’s about putting little museum labels next to the stuff you share. Preferably attribute with a link. Eg: thanks <a href="https://austinkleon.com">Austin Kleon</a> for writing this book. </p><h2 id="2a33eca3-3832-42a1-976a-5a9009fb05bb" class="">5. Tell good stories</h2><p id="93a17513-7bb9-4d9f-bc42-cd54ad6cce63" class="">People want to read (and hear) good stories. You’ll become more effective at sharing yourself and your work if you can tell a good story.</p><figure id="bfabce62-0b70-494b-b6ee-cb0afb7ddb93" class="image"><a href="Show%20Your%20Work!%207624c371c227438c80ac68216e9416df/32186755-3088-49E2-9D31-6B6E99ABFC92.jpeg"><img style="width:1051px" src="Show%20Your%20Work!%207624c371c227438c80ac68216e9416df/32186755-3088-49E2-9D31-6B6E99ABFC92.jpeg"/></a></figure><p id="fcd4ee07-dce6-4d82-8261-321db96d9e93" class=""><strong>Talk about yourself at parties - </strong>It’s okay to talk about yourself if people ask. Don’t think of it as an interrogation. Think of it as a chance to connect with someone who might be interested in your work. </p><h2 id="9fb5587f-b6e0-41b5-b35c-23d3895bedd3" class="">6. Teach what you know</h2><blockquote id="52386bfe-c193-4375-b64e-e6ad0bb7f528" class="">The impulse to keep to yourself what you have learned is not only shameful, it is destructive. Anything you do not give freely and abundantly becomes lost to you. You open your safe and find ashes. -Annie Dillard</blockquote><p id="fd7bf7a2-47dd-4bd3-85a2-ca6510bb2b26" class="">Teaching people doesn’t take away from what you do, it adds to it. When you teach someone how to do your work, you’re actually generating more interest in your work. People will feel closer to it because you’re teaching them what you know. </p><p id="d3cf7ba9-455f-4b04-9064-a017dd5167b9" class="">When you teach and share your work with others, you’ll get an education in return. People will see your stuff, connect with it, and reach out to you with recommendations and their own thoughts. This is magic. </p><h2 id="61ec236d-1708-44f1-8d35-131e65fc748f" class="">7. Don’t turn into human spam </h2><blockquote id="a189ed25-13d7-4866-9a46-f7c89cdac22a" class="">If you want fans, you have to be a fan first. If you want to be accepted by a community, you have to first be a good citizen of that community. If you’re only pointing to your own stuff online, you’re doing it wrong. You have to be a connector. The writer Blake Butler calls this being an open node. If you want to get, you have to give. If you want to be noticed, you have to notice. Shut up and listen once in a while. Be thoughtful. Be considerate. Don’t turn into human spam. Be an open node.</blockquote><p id="6d0f6723-564f-43bb-b36e-0ffd833a2db9" class=""><strong>You want hearts, not eyeballs - </strong>Stop caring about how many people read your stuff and how many people follow you online. </p><p id="db4562dd-b7eb-41cb-9d6a-a79b7599f5f6" class=""><strong>The vampire test - </strong>“Whatever excites you, go do it. Whatever drains you, stop doing it” - Derek Sivers </p><p id="b041086d-78e0-4f76-b997-1532618ff95f" class=""><strong>Meet people IRL </strong>- Make online friends, and then meet them in real life. Meet-ups are great. If you know someone online and you’re in the same town, grab a coffee with them. When you’re travelling, let your online friends know you’re going to be around. </p><blockquote id="39ee4f6b-d5cc-4f42-93c3-7d1ca83d7199" class="">Meeting people online is awesome, but turning them into IRL friends is even better. </blockquote><p id="6c2f7999-3710-4b3d-b599-a09fb97e6acc" class=""><em>In fact, as I write this in a coffee shop in central Cambridge, I’m sitting with a guy called Ross. He’s a doctor with an interest in medical education, and he found my work online. He emailed me saying he was in Cambridge and wanted to grab lunch. We’ve been hanging out for the past 4 hours - first we grabbed lunch at a burger place, and then we came over to this coffee shop. I’m writing this book summary. He’s sitting opposite me reading a book that I recommended (The Third Door by Alex Banayan). We’re IRL friends now :)</em></p><h2 id="98ccb003-8244-4f6f-ade3-9a576c9b7b76" class="">8. Learn to take a punch</h2><p id="03422bb4-6b02-437c-8c1b-a4e94c5f7431" class="">When you put stuff out there, you’re going to get a bit of criticism. This is natural. Learn to take it. Don’t let the fear of haters stop you from putting yourself out there. They’re a tiny minority, and they have no real power over you. </p><blockquote id="56a53885-da9b-44d5-a445-203c617bc5dc" class="">Compulsive avoidance of embarrassment is a form of suicide. - Colin Marshall. </blockquote><p id="9b7027a8-405d-41a8-be1a-1e5a853bf6b8" class="">Don’t spend your life avoiding vulnerability. If you do, you and your work will never truly connect with people. </p><h2 id="7909f10f-0aac-46fe-a6e1-12143b624244" class="">9. Sell out </h2><p id="25a34a21-da32-49c7-ae4e-05f3ba0507b3" class="">We need to get over our “starving artist” romanticism. There’s nothing wrong or evil about money. Charging money for stuff doesn’t hamper your creativity. </p><blockquote id="b75e9b28-694c-4af4-9620-62b6e19f831a" class="">Michaelangelo painted the Sistine Chapel ceiling because the pop commissioned him. </blockquote><p id="058b8c94-1df8-470e-98d0-05dc9b2895dc" class="">But at the same time, be careful about selling the work you love. </p><blockquote id="c69aa1ad-62b8-4bdc-a951-bb6172ff9da1" class="">Beware of selling the things that you love: When people are asked to get out their wallets, you find out how much they really value what you do. My friend John T. Unger tells this terrific story from his days as a street poet. He would do a poetry reading and afterward some guy would come up to him and say, “Your poem changed my life, man!” And John would say, “Oh, thanks. Want to buy a book? It’s five dollars.” And the guy would take the book, hand it back to John, and say, “Nah, that’s okay.” To which John would respond, “Geez, how much is your life worth?”</blockquote><p id="6c6d6e32-5c86-4b38-b36a-d3febd0eb2aa" class=""><strong>Keep a mailing list - </strong>Even if you don’t have anything to sell right now, keep a mailing list. There are people who run multimillion dollar businesses off their mailing lists. The model is simple - give away free great free stuff on your website. Collect the emails of people who enjoy reading it. When you have something remarkable to sell or share, send them an email letting them know. </p><p id="99b650ee-15c2-40c3-9c96-5e3f8c52216d" class=""><strong>Pay it forward - </strong>When you have success, help people who reach out to you. Help people who helped you get where you are. </p><p id="c46bf17c-ae5a-4876-8ef0-2cb1ab857b84" class=""><strong>Caveat - </strong>Don’t sacrifice your art or your work for the sake of answering emails. Be as generous as you can, but selfish enough to get your work done. </p><h2 id="1fee35db-27a8-4f8b-8783-aaf1e3bbdeaf" class="">10. Stick around </h2><p id="10ca87fc-b33f-4992-a180-b8ec0c7421ad" class=""><strong>Don’t quit - </strong>Keep doing your work, and keep sharing. </p><p id="2d3b5961-650f-4e00-af20-3c86f031ece1" class=""><strong>Take sabbaticals.</strong></p><p id="5122b29a-957c-45fa-91c2-68e001810a2b" class="">Don’t be afraid to change things up. It’s not really starting over. You’re still keeping everything you learned before. You’re just starting from chapter one again. </p></div></article></body></html>
